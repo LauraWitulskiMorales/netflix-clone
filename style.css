@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     color: #f5f5f1;
+    box-sizing: border-box;
 }
 
 header {
@@ -12,15 +13,6 @@ header {
     background-color: #141414;  
     display: flex; 
     padding: 0 20px; 
-/*
-    background-position: center;
-    justify-content: space-between;
-    align-items: center; 
-    top: 0; 
-    z-index: 1000; 
-    box-sizing: border-box;
-    height: auto;
-    min-height: 70px; */
 }
 
 .netflixLogo {
@@ -82,10 +74,8 @@ button {
     border-radius: 5px;
 }
 
-.wrapper {
-
-    
-    background: linear-gradient(to bottom, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 1) 100%);
+/* .wrapper { 
+    mask-image: linear-gradient(#141414, rgba(20, 20, 20, 0));
     width:fit-content;
     height:fit-content;
     background-size: contain;
@@ -93,18 +83,43 @@ button {
     position: relative;
     padding-bottom: 60px;
     overflow: scroll;
+} */
+
+.hero-text {
+    background-image: url(/img/rick-and-morty-portal-wynqhnx4q2jctd50.jpeg);
+    background-size: 100%;
+    height: 60%; 
+    background-repeat: no-repeat;
+    mask-image: linear-gradient(#141414, rgba(20, 20, 20, 0));
 }
 
-
-.title {
-    display: flex;
-    max-width: 70%;
-    background-color: transparent;
-    padding: 260px 0 40px 50px;
-}
+/*.banner img {
+    width: 100%;
+    height: 50%;
+    background-size: contain;
+    
+    z-index: -1;
+    
+}*/
 
 .title img {
-    width: 40%;
+    display: flex;
+    max-width: 40%;
+    padding: 260px 0 40px 50px;
+    /* bottom: 50vh; */
+    position: relative;
+    z-index: 1;
+    
+}
+
+.icons {
+    display: flex;
+    position: absolute;
+}
+
+.icons button {
+    position: relative;
+    /* bottom: 52vh; */
 }
 
 .hero-text button {
@@ -118,6 +133,7 @@ button {
     font-size:x-large;
     line-height: 45px;
 }
+
 
 .hero-text button#details {
     width: 185px;

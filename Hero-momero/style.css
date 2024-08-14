@@ -1,0 +1,158 @@
+body {
+    background: #141414;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+    color: #f5f5f1;
+    height: 100vh;
+}
+
+
+/* Background Image and fade */
+.wrapper { 
+    background-image: url(/img/rick-and-morty-portal-wynqhnx4q2jctd50.jpeg);
+    mask-image: linear-gradient(#141414, rgba(20, 20, 20, 0) 100%);
+    background-size: 100%;
+    height: 80vh;
+    background-repeat: no-repeat;
+    position: relative;
+    padding-bottom: 60px;
+    overflow: visible;
+} 
+
+/* Banner Name */
+.hero-text {
+    position: relative;
+    top: 40%;
+    align-items: center;
+}
+
+.hero-title img {
+    display: flex;
+    width: 25%;
+    position: relative;
+}
+
+/* Banner Buttons */
+.hero-text button {
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    height: 4%;
+    font-weight: bold;
+    line-height: 45px;
+    align-items: center;
+    font-size: 25px; 
+    text-align: left;
+}
+
+#play {
+    width: 7%;
+    color: black;
+    background-color: #f5f5f1;
+    margin: 0 20px 0 45px;
+}
+
+#play:hover {
+    background-color: rgba(245, 245, 241, 0.8);
+}
+
+#details {
+    width: 8%;
+    color: #f5f5f1;
+    background-color: rgba(48, 44, 44, 0.8);
+}
+
+#details:hover {
+    background-color: rgba(48, 44, 44, 0.6);
+}
+
+button .button-symbol {
+    width: 2vw;
+    margin-right: 5px; 
+    vertical-align: middle;
+    padding-right: 5%; 
+    
+}
+
+/* Media Queries Banner Name */
+@media (min-width: 1441px) and (max-width: 2560px) {
+    .hero-text {
+        top: 35%;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .hero-text {
+        top: 25%;
+    } 
+}
+
+
+@media (min-width: 769px) and (max-width: 1023px) {
+    .hero-text {
+        top: 15%;
+    }
+}
+
+
+@media (min-width: 480px) and (max-width: 768px) {
+    .hero-text {
+        top: 10%;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .hero-text {
+        top: 8%;
+    }
+}
+
+/* Media Queries Banner Buttons and Background Image*/
+
+@media (min-width: 1440px) and (max-width: 2467px) {
+    .hero-text button {
+        font-size: 14px;
+    }
+
+    .wrapper {
+        mask-repeat: no-repeat;
+        mask-size: 2467px 800px;
+    }
+
+    /* .fade {
+        background-color: #141414;
+        mask-image: linear-gradient(#141414, rgba(20, 20, 20, 0) 100%);
+    } */
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .hero-text button {
+        font-size: 9px;
+    }
+    
+}
+
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-text button {
+        font-size: 5.9px;
+    }
+}
+
+
+@media (min-width: 480px) and (max-width: 767px) {
+    .hero-text button {
+        font-size: 2.25px;
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .hero-text button {
+        font-size: px;
+    }
+}

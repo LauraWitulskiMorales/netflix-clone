@@ -1,0 +1,186 @@
+{
+  "popularMovies": [
+    {
+      "id": "1",
+      "title": "Coco",
+      "image": "/img/Coco.webp"
+    },
+    {
+      "id": "2",
+      "title": "Orange is the New Black",
+      "image": "/img/oitnb.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Naruto Shippuden",
+      "image": "/img/narutoShi.avif"
+    },
+    {
+      "id": "4",
+      "title": "Grey's Anatomy",
+      "image": "/img/gA.jpg"
+    }
+  ],
+  "recommendedMovies": [
+    {
+      "id": "5",
+      "title": "Barbie",
+      "image": "https://assets.aboutamazon.com/7f/e6/b76966994e56a97dbeba44f56009/barbie-hero.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Princess Mononoke",
+      "image": "https://www.indiewire.com/wp-content/uploads/2020/06/1692841_orig.jpg"
+    },
+    {
+      "id": "7",
+      "title": "Revenant",
+      "image": "https://images.cdn.prd.api.discomax.com/2024/02/25/937b7238-3757-3a64-b03d-83f8318a1e79.jpeg?f=jpg&q=75&w=1280&w=1200"
+    },
+    {
+      "id": "8",
+      "title": "Deadpool",
+      "image": "https://img1.hulu.com/user/v3/artwork/e27cac54-3c3c-425e-b7de-67edc2c9f496?base_image_bucket_name=image_manager&base_image=c508266a-667a-4ef8-b770-bfcaaf6d4fd5&size=600x338&format=webp"
+    },
+    {
+      "id": "9",
+      "title": "Oppenheimer",
+      "image": "https://noticiasdel6.com/wp-content/uploads/2023/07/oppenheimer.jpg"
+    }
+  ],
+  "trendingMovies": [
+    {
+      "id": "10",
+      "title": "The Rookie",
+      "image": "https://s-cdn-sj.eu-central-1.linodeobjects.com/the-rookie/hdtv.webp"
+    },
+    {
+      "id": "11",
+      "title": "Emily in Paris",
+      "image": "https://m.economictimes.com/thumb/msid-109821301,width-1600,height-900,resizemode-4,imgsize-50560/emily-in-paris-season-4-to-be-released-in-two-parts-lily-collins-reveals-official-release-date-teaser.jpg"
+    },
+    {
+      "id": "12",
+      "title": "Uglies",
+      "image": "https://occ-0-8407-444.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABaw9sGyPCVc466bV7uSY7Xar4CepAZOHHogKC92NnaBJFOBqp9Fyg_11fV2CrZZtmc4Wp3AZeMWicrbP6e__xMt-iOHYQKNRDE24.jpg?r=540"
+    },
+    {
+      "id": "13",
+      "title": "Fast & Furious 6",
+      "image": "https://rukminim2.flixcart.com/image/850/1000/poster/q/a/g/large-fast-n-furious-4300-fast-and-furious-6-poster-original-imaes5ksdceqhkg6.jpeg?q=90&crop=false"
+    },
+    {
+      "id": "14",
+      "title": "Avatar",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKUQGoJQo_RsEKR7XPLDL2ITg5vLHZvzb7pfmQLNvq9gGoHHWgfqw6YUKkL1dUneMcZpg&usqp=CAU"
+    }
+  ],
+  "emotionalMovies": [
+    {
+      "id": "15",
+      "title": "New Amsterdam",
+      "image": "https://images.plus.rtl.de/watch/761169/artwork_landscape/r7-55-az-91/new-amsterdam"
+    },
+    {
+      "id": "16",
+      "title": "Lost",
+      "image": "https://occ-0-8407-444.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABRfKJZBLjFhu-N3tPSxeuzUVStH-JfCr1CBe2QvRiDJ11AS7VTGZwo0FyP04adUemeh59EuzO5NjIUxjzIToRUna1zCAMtCJFkHB.webp?r=edeg"
+    },
+    {
+      "id": "17",
+      "title": "The Queen's Gambit",
+      "image": "https://assets.fontsinuse.com/static/use-media-items/135/134464/upto-700xauto/604cc48d/@2x/QueensGambit_02.png"
+    },
+    {
+      "id": "18",
+      "title": "Maid",
+      "image": "https://occ-0-2773-2774.1.nflxso.net/dnm/api/v6/Qs00mKCpRvrkl3HZAN5KwEL1kpE/AAAABZ3H_TPXA1Z4Qo-qpkAmAJ4SHekxgQIQ8IrdioC9bDLaM4QeUqJiKO-91z0RCLEdESoVLTq6xtBltwPpqSENJw3Smf3g9ml12AWavzDaMOgMaqk8s3jlpXcZFfcsYPPVNdWS.jpg?r=56c"
+    },
+    {
+      "id": "19",
+      "title": "Fate: The Winx Saga",
+      "image": "https://s29288.pcdn.co/wp-content/uploads/2021/02/fate-the-winx-saga-season-1-poster.jpg"
+    }
+  ],
+  "continueWatching": [
+    {
+      "id": "20",
+      "title": "Adventure Time",
+      "image": "https://pic.rutube.ru/video/25/87/25873ec054e1609ecb6f85421c977a2a.jpg"
+    },
+    {
+      "id": "21",
+      "title": "Brooklyn Nine-Nine",
+      "image": "https://wallpapercave.com/wp/wp2473156.jpg"
+    },
+    {
+      "id": "22",
+      "title": "Winx Club",
+      "image": "https://dev.winxclub.com/sites/default/files/styles/cover-16-9/public/app/cover/winx_rocks_the_world.jpg?itok=mJBGAxHE"
+    },
+    {
+      "id": "23",
+      "title": "Kaulitz & Kaulitz",
+      "image": "https://bilder.fernsehserien.de/sendung/hr2/kaulitz-und-kaulitz_653364-w-858.png.webp"
+    },
+    {
+      "id": "24",
+      "title": "Avatar",
+      "image": "http://www.sky.de/static/img/program_guide/59557_ser_l.jpg?impolicy=bp04_teaserdata_image_16_9"
+    }
+  ],
+  "originalMovies": [
+    {
+      "id": "25",
+      "title": "The Mandalorian",
+      "image": "https://images.alphacoders.com/112/1121346.jpeg"
+    },
+    {
+      "id": "26",
+      "title": "Stranger Things",
+      "image": "https://blogcritics.org/wp-content/uploads/2022/06/strager-things-v-4-768x432-crop-600x338-1.webp"
+    },
+    {
+      "id": "27",
+      "title": "Bridgerton",
+      "image": "https://576256f923.cbaul-cdnwnd.com/a8a5e6207f20e8645fac8b0d63f393ac/200000113-c49f0c49f3/bridgerton.webp?ph=576256f923"
+    },
+    {
+      "id": "28",
+      "title": "Breaking Bad",
+      "image": "https://c4.wallpaperflare.com/wallpaper/12/292/881/breaking-bad-tv-wallpaper-preview.jpg"
+    },
+    {
+      "id": "29",
+      "title": "The Crown",
+      "image": "https://hips.hearstapps.com/hbz.h-cdn.co/assets/16/40/1600x800/landscape-1475588380-the-crown-index.jpg?resize=1200:*"
+    }
+  ],
+  "newMovies": [
+    {
+      "id": "30",
+      "title": "Dune",
+      "image": "https://img.englishcinemakyiv.com/TZQNHl9QWb3c56UMslK_fYlpRY7l_3tqDBtkc_Ewkxw/resize:fill:800:450:1:0/gravity:sm/aHR0cHM6Ly9leHBhdGNpbmVtYXByb2QuYmxvYi5jb3JlLndpbmRvd3MubmV0L2ltYWdlcy8xYTdiNzYxMy05MWQ5LTQ2YjktYmVkYy1lOGRiMTFlZGE5ZDQuanBn.jpg"
+    },
+    {
+      "id": "31",
+      "title": "The Batman",
+      "image": "https://images.squarespace-cdn.com/content/v1/51b3dc8ee4b051b96ceb10de/1600041290961-QV53ZKSZMYB9IEIVJRMT/image-asset.jpeg?format=2500w"
+    },
+    {
+      "id": "32",
+      "title": "Black Widow",
+      "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/846a9086-8a40-43e0-aa10-2fc7d6d73730/ddoannh-2e079c7f-17ec-422d-9bf1-a7c15db47530.jpg/v1/fill/w_800,h_450,q_75,strp/black_widow__2020__wallpaper__3_by_mintmovi3_ddoannh-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDUwIiwicGF0aCI6IlwvZlwvODQ2YTkwODYtOGE0MC00M2UwLWFhMTAtMmZjN2Q2ZDczNzMwXC9kZG9hbm5oLTJlMDc5YzdmLTE3ZWMtNDIyZC05YmYxLWE3YzE1ZGI0NzUzMC5qcGciLCJ3aWR0aCI6Ijw9ODAwIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.-alTR5r3ixCs1VZKvzSPR8ip_9glTSb9Xl_fo6-aeUI"
+    },
+    {
+      "id": "33",
+      "title": "No Time to Die",
+      "image": "https://preview.redd.it/5zi82yd1tqg41.jpg?width=1080&crop=smart&auto=webp&s=29537a90c21c607863af82ab21478dce34b05231"
+    },
+    {
+      "id": "34",
+      "title": "Spider-Man: No Way Home",
+      "image": "https://wallpapers.com/images/high/spider-man-no-way-home-background-mcg8r3eg84os1zue.webp"
+    }
+  ]
+}

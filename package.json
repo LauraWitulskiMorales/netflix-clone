@@ -1,0 +1,10 @@
+{
+  "name": "laura-netflix-clone",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.html",
+  "devDependencies": {
+    "@antfu/eslint-config": "3.7.3",
+    "eslint": "9.12.0"
+  }
+}

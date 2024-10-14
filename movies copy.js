@@ -1,52 +1,24 @@
+/**
+ * @type {Record<string, Movie[]>}
+ */
 let moviesData = {};
-let favorites = [];
 
-const backendURL = 'http://localhost:3000';
+const favoritesStorageKey = 'movie-favorties';
 
-//
-// API FUNCTIONS
-//
-async function getMovies() {
-  const response = await fetch('http://localhost:3000/movies');
-  const movies = await response.json();
+/**
+ * @typedef {object} Movie
+ * @property {string} id - The id of the movie
+ * @property {string} title - The title of the movie
+ * @property {string} image - The image src URL for the movie
+ */
 
-  return movies;
-}
-
-async function getFavorites() {
-  const response = await fetch(`${backendURL}/movies/favorites`);
-  const favorites = await response.json();
-
-  return favorites;
-}
-
-async function addFavorite(movie) {
-  const response = await fetch(`${backendURL}/movies/favorites`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(movie),
-  });
-  const favorites = await response.json();
-
-  return favorites;
-}
-
-async function removeFavorite(movieId) {
-  const response = await fetch(`${backendURL}/movies/favorites/${movieId}`, {
-    method: 'DELETE',
-  });
-
-  const favorites = await response.json();
-
-  return favorites;
-}
-
-//
-// APP FUNCTIONS
-//
+/**
+ * This function filters movies by a given query.
+ * It uses the query to check if any of the existing movies in the dataset match the query in some way.
+ *
+ * @param {string} query - The query string to match against
+ * @returns {Record<string, Movie[]>} - The filtered movies by category (as key -> category, value -> movies)
+ */
 function filterMovies(query) {
   // if no query was passed, use the default dataset
   if (!query) {
@@ -67,9 +39,34 @@ function filterMovies(query) {
   return filteredMovies;
 }
 
+/**
+ *
+ * @returns {Movie[]} - an array of movie ids that are saved as favorites
+ */
+function getFavorites() {
+  return JSON.parse(localStorage.getItem(favoritesStorageKey)) || [];
+}
+
+/**
+ *
+ * @param {Movie[]} movies - an array of movie ids to save as favorites
+ */
+function setFavorites(movies) {
+  localStorage.setItem(favoritesStorageKey, JSON.stringify(movies));
+}
+
+/**
+ * Renders a list of movies.
+ *
+ * @param {Record<string, Movie[]>} movies - the list of movies to render.
+ * @returns {void}
+ */
 function renderMovies(movies) {
   // item template for cloning purposes
   const itemTemplate = document.getElementById('movieTemplateItem');
+
+  // retrieve data from local storage
+  const favorites = getFavorites();
 
   for (const category in movies) {
     const row = document.getElementById(category);
@@ -88,12 +85,12 @@ function renderMovies(movies) {
       movieList.innerHTML = `<div style="font-size: 18px; font-weight: 700;">No results found. 🥺</div>`;
     }
 
-    movies[category].forEach(async (movie) => {
+    movies[category].forEach((movie) => {
       // clone the list item from the template
       const movieTemplate = itemTemplate.content.cloneNode(true);
       const movieEl = movieTemplate.querySelector('li');
 
-      const isFavorite = !!favorites.find(fav => fav.id === movie.id);
+      const isFavorite = favorites.find(favorite => favorite.id === movie.id);
 
       if (isFavorite) {
         movieEl.classList.add('favorite');
@@ -111,23 +108,29 @@ function renderMovies(movies) {
       const addButt = movieTemplate.querySelector('.addButton');
       const removeButt = movieTemplate.querySelector('.removeButton');
 
-      addButt.addEventListener('click', async () => {
-        favorites = await addFavorite(movie);
+      addButt.addEventListener('click', () => {
+        favorites.unshift(movie);
+        setFavorites(favorites);
 
-        // update the category and favorite list
+        alert(`${movie.title} has been added to your list`);
+
         renderMovies({
           [category]: movies[category],
-          myList: favorites,
+          myList: getFavorites(),
         });
       });
 
-      removeButt.addEventListener('click', async () => {
-        favorites = await removeFavorite(movie.id);
+      removeButt.addEventListener('click', () => {
+        // if the favorite.id does not match the movie.id, keep the favorite in the list
+        const filteredFavorites = favorites.filter(favorite => favorite.id !== movie.id);
 
-        // update the category and favorite list
+        setFavorites(filteredFavorites);
+
+        alert(`${movie.title} has been removed from your list`);
+
         renderMovies({
           [category]: movies[category],
-          myList: favorites,
+          myList: getFavorites(),
         });
       });
 
@@ -137,13 +140,15 @@ function renderMovies(movies) {
 }
 
 async function startApp() {
-  moviesData = await getMovies();
-  favorites = await getFavorites();
+  const response = await fetch('http://localhost:3000/movies');
+  moviesData = await response.json();
+
+  const savedFavorites = getFavorites();
 
   // render the initial page
   renderMovies({
     ...moviesData,
-    myList: favorites,
+    myList: savedFavorites,
   });
 }
 

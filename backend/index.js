@@ -2,6 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const moviesData = require('./data.json');
 const favorites = require('./favorites');
+const filter = require('./filter');
 
 const app = express();
 const port = 3000;
@@ -11,6 +12,12 @@ app.use(express.json());
 
 app.get('/movies', (request, response) => {
   response.send(moviesData);
+});
+
+app.get('/movies/filter', (req, res) => {
+  const query = req.query.q;
+  const filteredMovies = filter(query);
+  res.json(filteredMovies);
 });
 
 app.get('/movies/favorites', (req, res) => {

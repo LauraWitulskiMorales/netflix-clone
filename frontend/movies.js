@@ -8,9 +8,16 @@ const backendURL = 'http://localhost:3000';
 //
 async function getMovies() {
   const response = await fetch('http://localhost:3000/movies');
-  const movies = await response.json();
+  const moviesData = await response.json();
 
-  return movies;
+  return moviesData;
+}
+
+async function searchMovies(query) {
+  const response = await fetch(`http://localhost:3000/filter?q=${encodeURIComponent(query)}`);
+  const filteredMovies = await response.json();
+
+  return filteredMovies;
 }
 
 async function getFavorites() {
@@ -46,26 +53,37 @@ async function removeFavorite(movieId) {
 
 //
 // APP FUNCTIONS
-//
-function filterMovies(query) {
-  // if no query was passed, use the default dataset
-  if (!query) {
-    return moviesData;
-  }
 
-  const filteredMovies = {};
+document.getElementById('searchInput').addEventListener('input', async (event) => {
+  const query = event.target.value;
+  const filteredMovies = await searchMovies(query);
 
-  // Loop through each category
-  Object.keys(moviesData).forEach((category) => {
-    const movies = moviesData[category];
-    const filteredCategoryMovies = movies.filter(movie =>
-      movie.title.toLowerCase().includes(query.toLowerCase()),
-    );
-    filteredMovies[category] = filteredCategoryMovies;
+  // Render the filtered movies
+  renderMovies({
+    ...filteredMovies,
+    myList: favorites,
   });
+});
+//
+// function filterMovies(query) {
+//   // if no query was passed, use the default dataset
+//   if (!query) {
+//     return moviesData;
+//   }
 
-  return filteredMovies;
-}
+//   const filteredMovies = {};
+
+//   // Loop through each category
+//   Object.keys(moviesData).forEach((category) => {
+//     const movies = moviesData[category];
+//     const filteredCategoryMovies = movies.filter(movie =>
+//       movie.title.toLowerCase().includes(query.toLowerCase()),
+//     );
+//     filteredMovies[category] = filteredCategoryMovies;
+//   });
+
+//   return filteredMovies;
+// }
 
 function renderMovies(movies) {
   // item template for cloning purposes

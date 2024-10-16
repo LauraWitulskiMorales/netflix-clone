@@ -123,7 +123,7 @@ function renderMovies(movies) {
       removeButt.addEventListener('click', () => {
         // if the favorite.id does not match the movie.id, keep the favorite in the list
         const filteredFavorites = favorites.filter(favorite => favorite.id !== movie.id);
-
+        
         setFavorites(filteredFavorites);
 
         alert(`${movie.title} has been removed from your list`);

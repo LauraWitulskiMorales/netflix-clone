@@ -3,22 +3,22 @@
     {
       "id": "1",
       "title": "Coco",
-      "image": "/img/Coco.webp"
+      "image": "/frontend/img/Coco.webp"
     },
     {
       "id": "2",
       "title": "Orange is the New Black",
-      "image": "/img/oitnb.jpg"
+      "image": "/frontend/img/oitnb.jpg"
     },
     {
       "id": "3",
       "title": "Naruto Shippuden",
-      "image": "/img/narutoShi.avif"
+      "image": "/frontend/img/narutoShi.avif"
     },
     {
       "id": "4",
       "title": "Grey's Anatomy",
-      "image": "/img/gA.jpg"
+      "image": "/frontend/img/gA.jpg"
     }
   ],
   "recommendedMovies": [

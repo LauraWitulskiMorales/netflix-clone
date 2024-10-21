@@ -2,7 +2,6 @@ const cors = require('cors');
 const express = require('express');
 const moviesData = require('./data.json');
 const favorites = require('./favorites');
-const filter = require('./filter');
 
 const app = express();
 const port = 3000;
@@ -10,15 +9,40 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/movies', (request, response) => {
-  response.send(moviesData);
-});
+// app.get('/movies', (request, response) => {
+//   response.send(moviesData);
+// });
 
-app.get('/movies/filter', (req, res) => {
-  const query = req.query.q;
-  const filteredMovies = filter(query);
+app.get('/movies', (req, res) => {
+  const search = req.query.search; // Get search query
+  let filteredMovies = {}; // Object to store filtered results
+
+  // If no search query exists, return all movies
+  if (!search) {
+    return res.json(moviesData);
+  }
+
+  // Loop through each category in moviesData
+  Object.keys(moviesData).forEach((category) => {
+    const movies = moviesData[category];
+    
+
+    // Filter movies based on the title
+    const filteredCategoryMovies = movies.filter(movie =>
+      movie.title.toLowerCase().includes(search.toLowerCase())
+    );
+    
+      filteredMovies[category] = filteredCategoryMovies;
+    
+  });
+
+  // Return the filtered movies as a JSON response
   res.json(filteredMovies);
 });
+
+
+
+
 
 app.get('/movies/favorites', (req, res) => {
   res.json(favorites);

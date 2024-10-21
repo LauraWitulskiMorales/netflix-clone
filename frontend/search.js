@@ -12,16 +12,6 @@ document.getElementById('search-button').addEventListener('click', () => {
   }
 });
 
-const searchInput = document.getElementById('searchInput');
-
-// Event listener for search input
-searchInput.addEventListener('input', (event) => {
-  const query = event.target.value;
-
-  const filteredMovies = filterMovies(query);
-
-  renderMovies(filteredMovies);
-});
 
 /*
 document.getElementById('search-button').addEventListener('click', function() {

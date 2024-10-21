@@ -14,8 +14,9 @@ async function getMovies() {
 }
 
 async function searchMovies(query) {
-  const response = await fetch(`http://localhost:3000/filter?q=${encodeURIComponent(query)}`);
+  const response = await fetch(`http://localhost:3000/movies?search=${encodeURIComponent(query)}`);
   const filteredMovies = await response.json();
+
 
   return filteredMovies;
 }
@@ -38,6 +39,8 @@ async function addFavorite(movie) {
   });
   const favorites = await response.json();
 
+  alert (`${movie.title} has been added to your List`);
+
   return favorites;
 }
 
@@ -47,6 +50,8 @@ async function removeFavorite(movieId) {
   });
 
   const favorites = await response.json();
+
+  alert ('Movie has been removed from your List');
 
   return favorites;
 }

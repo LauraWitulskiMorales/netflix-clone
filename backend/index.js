@@ -9,90 +9,66 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-// app.get('/movies', (request, response) => {
-//   response.send(moviesData);
-// });
+// Utility function to add `isFavorite` property
+function attachFavoriteStatus(movies) {
+  return movies.map(movie => ({
+    ...movie,
+    isFavorite: favorites.some(fav => fav.id === movie.id)
+  }));
+}
 
 app.get('/movies', (req, res) => {
-  const search = req.query.search; // Get search query
-  let filteredMovies = {}; // Object to store filtered results
+  const search = req.query.search; 
+  let filteredMovies = {}; 
 
-  // If no search query exists, return all movies
   if (!search) {
-    return res.json(moviesData);
+    // Add `isFavorite` to each movie in all categories if no search is applied
+    for (const category in moviesData) {
+      filteredMovies[category] = attachFavoriteStatus(moviesData[category]);
+    }
+    return res.json(filteredMovies);
   }
 
-  // Loop through each category in moviesData
   Object.keys(moviesData).forEach((category) => {
     const movies = moviesData[category];
-    
-
-    // Filter movies based on the title
     const filteredCategoryMovies = movies.filter(movie =>
       movie.title.toLowerCase().includes(search.toLowerCase())
     );
-    
-      filteredMovies[category] = filteredCategoryMovies;
-    
+    filteredMovies[category] = attachFavoriteStatus(filteredCategoryMovies);
   });
 
-  // Return the filtered movies as a JSON response
   res.json(filteredMovies);
 });
 
-
-
-
-
 app.get('/movies/favorites', (req, res) => {
-  res.json(favorites);
-});
-
-app.get('/movies/favorites/:id', (req, res) => {
-  const { id } = req.params;
-
-  const favorite = favorites.find(favorite => id === favorite.id);
-
-  if (!favorite) {
-    return res.status(404).json({ message: 'Movie not found in favorites' });
-  }
-
-  res.json(favorite);
+  res.json(favorites.map(movie => ({ ...movie, isFavorite: true })));
 });
 
 app.post('/movies/favorites', (req, res) => {
   const { id, title, image } = req.body;
 
-  console.log(req.body);
-
   if (!id || !title || !image) {
     return res.status(400).json({ message: 'Movie details incomplete', movie: { id, title, image } });
   }
 
-  // check if already a favorite
   const movieExists = favorites.some(movie => movie.id === id);
 
   if (movieExists) {
     return res.status(409).json({ message: 'Movie is already in favorites' });
   }
 
-  // Save the movie to favorites
   favorites.unshift({ id, title, image });
-
-  return res.status(201).json(favorites);
+  res.status(201).json(favorites.map(movie => ({ ...movie, isFavorite: true })));
 });
 
 app.delete('/movies/favorites/:id', (req, res) => {
   const { id } = req.params;
-
-  // Find the index of the movie to delete
   const movieIndex = favorites.findIndex(movie => movie.id === id);
 
   if (movieIndex === -1) {
     return res.status(404).json({ message: 'Movie not found in favorites' });
   }
 
-  // Remove the movie from the favorites array
   favorites.splice(movieIndex, 1);
 
   return res.status(200).json(favorites);

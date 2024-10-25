@@ -265,13 +265,20 @@ button .button-symbol {
 }
 
 .movie-row li.favorite .addButton {
-    display: none;
+    display: none; /* Hide add button if it's a favorite */
+}
+
+.movie-row li.favorite .removeButton {
+    display: block; /* Show remove button if it's a favorite */
 }
 
 .movie-row li:not(.favorite) .removeButton {
-    display: none;
+    display: none; /* Hide remove button if it's not a favorite */
 }
 
+.movie-row li:not(.favorite) .addButton {
+    display: block; /* Show add button if it's not a favorite */
+}
 
 
 footer {

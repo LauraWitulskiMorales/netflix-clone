@@ -39,25 +39,52 @@ async function addFavorite(movie) {
   });
   const favorites = await response.json();
 
-  alert (`${movie.title} has been added to your List`);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
 
   return favorites;
 }
 
 async function removeFavorite(movieId) {
+  console.log("Attempting to remove movie with ID:", movieId);
   const response = await fetch(`${backendURL}/movies/favorites/${movieId}`, {
     method: 'DELETE',
   });
 
   const favorites = await response.json();
 
-  alert ('Movie has been removed from your List');
+  localStorage.setItem('favorites', JSON.stringify(favorites));
 
   return favorites;
 }
 
 //
-// APP FUNCTIONS
+// EVENT LISTENERS
+//
+// FAVORITES BUTTONS
+
+function handleFaves(addButt, removeButt, movie, movieEl, category, movies) {
+  addButt.addEventListener('click', async () => {
+    await addFavorite(movie); // Logic to add movie to favorites
+    alert(`"${movie.title}" has been added to your List!`);
+    
+    // Refresh the movie data and re-render
+    const updatedFavorites = await getFavorites(); // Fetch updated favorites
+    await startApp(); // Call startApp to re-render with updated data
+  });
+
+  removeButt.addEventListener('click', async () => {
+    await removeFavorite(movie.id); // Logic to remove movie from favorites
+    alert(`"${movie.title}" has been removed from your List!`);
+    
+    // Refresh the movie data and re-render
+    const updatedFavorites = await getFavorites(); // Fetch updated favorites
+    await startApp(); // Call startApp to re-render with updated data
+  });
+}
+
+//
+// SEARCH QUERY
+//
 
 document.getElementById('searchInput').addEventListener('input', async (event) => {
   const query = event.target.value;
@@ -69,28 +96,15 @@ document.getElementById('searchInput').addEventListener('input', async (event) =
     myList: favorites,
   });
 });
+
 //
-// function filterMovies(query) {
-//   // if no query was passed, use the default dataset
-//   if (!query) {
-//     return moviesData;
-//   }
-
-//   const filteredMovies = {};
-
-//   // Loop through each category
-//   Object.keys(moviesData).forEach((category) => {
-//     const movies = moviesData[category];
-//     const filteredCategoryMovies = movies.filter(movie =>
-//       movie.title.toLowerCase().includes(query.toLowerCase()),
-//     );
-//     filteredMovies[category] = filteredCategoryMovies;
-//   });
-
-//   return filteredMovies;
-// }
+// RENDERING 
+//
 
 function renderMovies(movies) {
+  console.log("Rendering movies:", movies); // Log the movies to be rendered
+  console.log("Current favorites:", favorites); // Log current favorites list
+
   // item template for cloning purposes
   const itemTemplate = document.getElementById('movieTemplateItem');
 
@@ -103,7 +117,6 @@ function renderMovies(movies) {
     }
 
     const movieList = row.querySelector('ul');
-
     // empty the list so we can append new items or remove filtered ones
     movieList.innerHTML = '';
 
@@ -115,44 +128,18 @@ function renderMovies(movies) {
       // clone the list item from the template
       const movieTemplate = itemTemplate.content.cloneNode(true);
       const movieEl = movieTemplate.querySelector('li');
+      
 
-      const isFavorite = !!favorites.find(fav => fav.id === movie.id);
-
-      if (isFavorite) {
-        movieEl.classList.add('favorite');
-      }
-      else {
-        movieEl.classList.remove('favorite');
-      }
-
+      movieEl.classList.toggle('favorite', movie.isFavorite);
+      
       const imgEl = movieTemplate.querySelector('img');
-
-      // add necessary info to img tag
       imgEl.alt = movie.title;
       imgEl.src = movie.image;
 
       const addButt = movieTemplate.querySelector('.addButton');
       const removeButt = movieTemplate.querySelector('.removeButton');
 
-      addButt.addEventListener('click', async () => {
-        favorites = await addFavorite(movie);
-
-        // update the category and favorite list
-        renderMovies({
-          [category]: movies[category],
-          myList: favorites,
-        });
-      });
-
-      removeButt.addEventListener('click', async () => {
-        favorites = await removeFavorite(movie.id);
-
-        // update the category and favorite list
-        renderMovies({
-          [category]: movies[category],
-          myList: favorites,
-        });
-      });
+      handleFaves(addButt, removeButt, movie, movieEl, category, movies);
 
       movieList.appendChild(movieTemplate);
     });
@@ -163,6 +150,7 @@ async function startApp() {
   moviesData = await getMovies();
   favorites = await getFavorites();
 
+  console.log("Initial favorites:", favorites); // Log initial favorites
   // render the initial page
   renderMovies({
     ...moviesData,
